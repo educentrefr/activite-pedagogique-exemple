@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité</title>
+</head>
+<body>
+    <main>
+        Votre contenu ici
+    </main>
+    <script>
+        (() => {
+            // Get the full hash string including the "#"
+            const hash = window.location.hash;
+
+            // Remove the "#" symbol to get just the hash variables
+            const hashVariables = hash.substring(1);
+
+            // Now you can work with the hash variables
+            console.log(hashVariables);
+
+            // If the hash variables are in key-value format (e.g., #key1=value1&key2=value2)
+            // You can further parse them into an object like this:
+            const hashParams = {};
+            const paramsArray = hashVariables.split('&');
+            for (let i = 0; i < paramsArray.length; i++) {
+                const param = paramsArray[i].split('=');
+                const key = decodeURIComponent(param[0]);
+                if (key) {
+                    const value = decodeURIComponent(param[1]);
+                    hashParams[key] = value;
+                }
+            }
+
+            // Now you can access individual hash variables as properties of the hashParams object
+            console.log(hashParams);
+        })();
+    </script>
+</body>
+</html>
